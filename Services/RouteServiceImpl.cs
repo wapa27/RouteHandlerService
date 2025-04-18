@@ -9,7 +9,6 @@ namespace RouteHandlerService.Services
     public class RouteServiceImpl: RouteHandler.RouteService.RouteServiceBase
     {
         private readonly SignsAndAudioServiceClient _client;
-        //private readonly string _baseDataPath = Path.Combine("..", "Data"); // adjust if needed
         private readonly string _baseDataPath = Path.Combine(
             Directory.GetCurrentDirectory(), "Data"
         );
@@ -21,7 +20,7 @@ namespace RouteHandlerService.Services
             Console.WriteLine("RouteHandlerService Reached");
             Console.WriteLine(request.RouteId);
 
-            _ = SendToSAASAsync(request.RouteId); // fire-and-forget
+            _ = SendToSAASAsync(request.RouteId);
 
             return Task.FromResult(new RouteResponse { Success = true });
         }
@@ -47,7 +46,6 @@ namespace RouteHandlerService.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"SendToSAASAsync failed: {ex.Message}");
-                // Optionally log details or retry
             }
         }
 
@@ -68,7 +66,7 @@ namespace RouteHandlerService.Services
                 Console.WriteLine($"Error reading {filename}: {ex.Message}");
             }
 
-            return ""; // fallback message
+            return "";
         }
 
     }
