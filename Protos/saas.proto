@@ -1,0 +1,16 @@
+syntax = "proto3";
+package SignsAndAudioService;
+
+option csharp_namespace = "SignsAndAudioService";
+
+service SignsAndAudioService {
+  rpc ReceiveMessages (MessageRequest) returns (MessageReply);
+}
+
+message MessageRequest {
+  bytes data = 1;
+}
+
+message MessageReply {
+  string status = 1;
+}
